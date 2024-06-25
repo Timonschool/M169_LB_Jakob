@@ -77,19 +77,4 @@ After pushing your image you can find it on [DockerHub](https://hub.docker.com/r
 ### Important 
 To run this deployment script you must be on your local machine and not in your dev-container. You can just pull this project on your machine and run the script with you locally installed bash shell (mostly WSL).
 
-## Tasks for school mark:
 
-- [x] Demo-Project
-- [x] Documentation
-- [x] Automatic installation
-- [x] Usable Extensions
-- [x] Debugging support
-- [x] Own project
-- [x] Database integration
-- [x] Database tool
-- [x] Productive Container
-- [x] Automatic deployment
-- [x] Safe handling of sensitive data
-- [x] Demo data
-- [ ] alternative solution
-- [x] One-Click setup
