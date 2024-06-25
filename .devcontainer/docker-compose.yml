@@ -1,0 +1,27 @@
+version: '3.9'
+
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye
+    depends_on:
+      - db
+    network_mode: service:db
+    command: sleep infinity
+
+  db:
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - mongodb-data:/data/db
+
+  tools:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=db
+      - ME_CONFIG_MONGODB_PORT=27017
+      
+volumes:
+  mongodb-data:
+  

@@ -1,0 +1,20 @@
+{
+	"name": "Modul-347 Levin Fankhauser",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mongodb.mongodb-vscode",
+				"esbenp.prettier-vscode",
+				"tal7aouy.icons",
+				"ms-azuretools.vscode-docker",
+				"bierner.color-info",
+				"celianriboulet.webvalidator"
+			]
+		}
+	},
+
+	"postCreateCommand": "npm install && node init-db.js"
+}
