@@ -1,5 +1,5 @@
 {
-	"name": "Modul-347 Levin Fankhauser",
+	"name": "Modul-169 Timon Jakob",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",

@@ -1,4 +1,4 @@
-# Modul 347
+# Modul 169
 
 ## About the Project
 This is a school project that deals with the topic of Docker. The app itself is a Node.js app that works with HTML, CSS and Javascript. It has a database connection to a MongoDB database. The app is a simple self-developed note app where you can save your notes for later with the purpose to present a Docker devcontainer with a node.js app and a MongoDB database and a couple of other things.

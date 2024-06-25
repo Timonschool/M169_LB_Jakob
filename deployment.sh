@@ -3,7 +3,7 @@
 source .env
 
 DOCKER_USERNAME=$(echo $DOCKER_USERNAME | tr -d '\r')
-IMAGE_NAME="modul-347"
+IMAGE_NAME="modul-169"
 TAG="v1.0"
 REGISTRY_URL="docker.io"
 
