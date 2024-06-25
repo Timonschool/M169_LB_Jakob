@@ -21,9 +21,9 @@ npm start
 The database we use is a MongoDB Database. It runs on port 27017.
 
 ### Dummy Data
-The dummy data gets insertet with the init-db.js script. It runs when building the container. If you want to insert dummy data later at any point run:
+The dummy data gets insertet with the insertDemoContacts.js script. It runs when building the container. If you want to insert dummy data later at any point run:
 ```bash
-node init-db.js
+node insertDemoContacts.js
 ```
 
 ### Database Tools

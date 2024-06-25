@@ -4,31 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Note App</title>
+    <title>Contact App</title>
 </head>
 <body>
     <div id="dialog">
-        <h1>Note App</h1>
+        <h1>Contact App</h1>
     
-        <form id="add-note-form">
-            <input type="text" id="note-name" placeholder="Enter a Title for your Note">
-            <textarea id="note-content" placeholder="Enter your Note"></textarea>
-            <button type="submit" id="submit-button">Save Note</button>
+        <form id="add-contact-form">
+            <input type="text" id="contact-firstname" placeholder="Enter First Name">
+            <input type="text" id="contact-lastname" placeholder="Enter Last Name">
+            <input type="text" id="contact-phone" placeholder="Enter Phone Number">
+            <input type="email" id="contact-email" placeholder="Enter Email">
+            <button type="submit" id="submit-button">Save Contact</button>
         </form>
     </div>
 
-    <div id="notes">
-        <h1>Your Notes</h1>
+    <div id="contacts">
+        <h1>Your Contacts</h1>
 
-        <div id="note-list"></div>
+        <div id="contact-list"></div>
     
-        <div id="note-modal" class="modal">
+        <div id="contact-modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2 id="modal-note-name"></h2>
-                <p id="modal-note-content"></p>
+                <h2 id="modal-contact-name"></h2>
+                <p id="modal-contact-phone"></p>
+                <p id="modal-contact-email"></p>
                 <div id="delete-button-field">
-                    <button id="delete-note">Delete Note</button>
+                    <button id="delete-contact">Delete Contact</button>
                 </div>
             </div>
         </div>

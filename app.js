@@ -12,7 +12,7 @@ let db;
 async function connectToMongo() {
     try {
         await client.connect();
-        db = client.db('notes_app');
+        db = client.db('contacts_app');
         console.log('Connected to MongoDB');
     } catch (err) {
         console.error('Error connecting to MongoDB', err);
@@ -22,27 +22,26 @@ async function connectToMongo() {
 connectToMongo();
 
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/notes', async (req, res) => {
-    const notes = await db.collection('notes').find({}).toArray();
-    res.json(notes);
+app.get('/contacts', async (req, res) => {
+    const contacts = await db.collection('contacts').find({}).toArray();
+    res.json(contacts);
 });
 
-app.post('/notes', async (req, res) => {
-    const note = req.body;
-    await db.collection('notes').insertOne(note);
-    res.status(201).send('Note added successfully');
+app.post('/contacts', async (req, res) => {
+    const contact = req.body;
+    await db.collection('contacts').insertOne(contact);
+    res.status(201).send('Contact added successfully');
 });
 
-app.delete('/notes/:id', async (req, res) => {
+app.delete('/contacts/:id', async (req, res) => {
     const id = req.params.id;
     try {
-        await db.collection('notes').deleteOne({ _id: new ObjectId(id) }); 
-        res.status(200).send('Note deleted successfully');
+        await db.collection('contacts').deleteOne({ _id: new ObjectId(id) }); 
+        res.status(200).send('Contact deleted successfully');
     } catch (err) {
-        console.error('Error deleting note', err);
+        console.error('Error deleting contact', err);
         res.status(500).send('Internal server error');
     }
 });

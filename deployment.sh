@@ -2,7 +2,7 @@
 
 source .env
 
-DOCKER_USERNAME=$(echo $DOCKER_USERNAME | tr -d '\r') # Remove carriage return character if present. Can cause the script to fail.
+DOCKER_USERNAME=$(echo $DOCKER_USERNAME | tr -d '\r')
 IMAGE_NAME="modul-347"
 TAG="v1.0"
 REGISTRY_URL="docker.io"

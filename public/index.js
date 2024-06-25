@@ -1,84 +1,90 @@
-async function fetchNotes() {
-    const response = await fetch('/notes');
-    const notes = await response.json();
-    const noteList = document.getElementById('note-list');
-    noteList.innerHTML = '';
-    notes.forEach(note => {
+async function fetchContacts() {
+    const response = await fetch('/contacts');
+    const contacts = await response.json();
+    const contactList = document.getElementById('contact-list');
+    contactList.innerHTML = '';
+    contacts.forEach(contact => {
         const button = document.createElement('button');
-        button.textContent = note.name;
-        button.addEventListener('click', () => openNoteModal(note));
-        noteList.appendChild(button);
+        button.textContent = `${contact.firstname} ${contact.lastname}`;
+        button.addEventListener('click', () => openContactModal(contact));
+        contactList.appendChild(button);
     });
 }
 
-async function addNote() {
-    const noteNameInput = document.getElementById('note-name');
-    const noteContentInput = document.getElementById('note-content');
-    const name = noteNameInput.value.trim();
-    const content = noteContentInput.value.trim();
-    if (name && content) {
-        const response = await fetch('/notes', {
+async function addContact() {
+    const contactFirstNameInput = document.getElementById('contact-firstname');
+    const contactLastNameInput = document.getElementById('contact-lastname');
+    const contactPhoneInput = document.getElementById('contact-phone');
+    const contactEmailInput = document.getElementById('contact-email');
+    const firstname = contactFirstNameInput.value.trim();
+    const lastname = contactLastNameInput.value.trim();
+    const phone = contactPhoneInput.value.trim();
+    const email = contactEmailInput.value.trim();
+    if (firstname && lastname && phone && email) {
+        const response = await fetch('/contacts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, content })
+            body: JSON.stringify({ firstname, lastname, phone, email })
         });
         if (response.ok) {
-            fetchNotes();
-            noteNameInput.value = '';
-            noteContentInput.value = '';
+            fetchContacts();
+            contactFirstNameInput.value = '';
+            contactLastNameInput.value = '';
+            contactPhoneInput.value = '';
+            contactEmailInput.value = '';
         } else {
-            console.error('Failed to add note');
+            console.error('Failed to add contact');
         }
     }
 }
 
-async function deleteNote(id) {
-    const response = await fetch(`/notes/${id}`, {
+async function deleteContact(id) {
+    const response = await fetch(`/contacts/${id}`, {
         method: 'DELETE'
     });
     if (response.ok) {
-        closeNoteModal();
-        fetchNotes();
+        closeContactModal();
+        fetchContacts();
     } else {
-        console.error('Failed to delete note');
+        console.error('Failed to delete contact');
     }
 }
 
-function openNoteModal(note) {
-    const modal = document.getElementById('note-modal');
-    const modalNoteName = document.getElementById('modal-note-name');
-    const modalNoteContent = document.getElementById('modal-note-content');
-    const deleteButton = document.getElementById('delete-note');
+function openContactModal(contact) {
+    const modal = document.getElementById('contact-modal');
+    const modalContactName = document.getElementById('modal-contact-name');
+    const modalContactPhone = document.getElementById('modal-contact-phone');
+    const modalContactEmail = document.getElementById('modal-contact-email');
+    const deleteButton = document.getElementById('delete-contact');
 
-    modalNoteName.textContent = note.name;
+    modalContactName.textContent = `${contact.firstname} ${contact.lastname}`;
+    modalContactPhone.textContent = `Phone: ${contact.phone}`;
+    modalContactEmail.textContent = `Email: ${contact.email}`;
 
-    modalNoteContent.innerHTML = note.content.replace(/\n/g, '<br>');
-
-    deleteButton.addEventListener('click', () => deleteNote(note._id));
+    deleteButton.addEventListener('click', () => deleteContact(contact._id));
 
     modal.style.display = 'block'; 
 }
 
-
-function closeNoteModal() {
-    const modal = document.getElementById('note-modal');
+function closeContactModal() {
+    const modal = document.getElementById('contact-modal');
     modal.style.display = 'none'; 
 }
 
-document.getElementsByClassName('close')[0].addEventListener('click', closeNoteModal);
+document.getElementsByClassName('close')[0].addEventListener('click', closeContactModal);
 
 window.addEventListener('click', function(event) {
-    const modal = document.getElementById('note-modal');
+    const modal = document.getElementById('contact-modal');
     if (event.target === modal) {
-        closeNoteModal();
+        closeContactModal();
     }
 });
 
-document.getElementById('add-note-form').addEventListener('submit', function(event) {
+document.getElementById('add-contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    addNote();
+    addContact();
 });
 
-fetchNotes();
+fetchContacts();
