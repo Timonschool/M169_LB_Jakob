@@ -1,7 +1,7 @@
 # Modul 169
 
 ## About the Project
-This is a school project that deals with the topic of Docker. The app itself is a Node.js app that works with HTML, CSS and Javascript. It has a database connection to a MongoDB database. The app is a simple self-developed note app where you can save your notes for later with the purpose to present a Docker devcontainer with a node.js app and a MongoDB database and a couple of other things.
+Dies ist ein Schulprojekt, das sich mit dem Thema Docker beschäftigt. Die Anwendung selbst ist eine Node.js-App, die mit HTML, CSS und JavaScript arbeitet. Sie hat eine Datenbankverbindung zu einer MongoDB-Datenbank. Die App ist eine einfache selbst entwickelte Kontaktverwaltungs-App, in der Sie Ihre Kontakte speichern, anzeigen und löschen können. Der Zweck ist, einen Docker-Devcontainer mit einer Node.js-App und einer MongoDB-Datenbank sowie einigen weiteren Dingen zu präsentieren.
 
 ## Start the project
 <a href="https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/Timonschool/M169_LB_Jakob.git">
@@ -18,63 +18,63 @@ npm start
 ```
 
 ## Database
-The database we use is a MongoDB Database. It runs on port 27017.
+Die verwendete Datenbank ist eine MongoDB-Datenbank. Sie läuft auf Port 27017.
 
 ### Dummy Data
-The dummy data gets insertet with the insertDemoContacts.js script. It runs when building the container. If you want to insert dummy data later at any point run:
+Die Demodaten werden mit dem Skript insertDemoContacts.js eingefügt. Es wird beim Erstellen des Containers ausgeführt. Wenn Sie später zu einem beliebigen Zeitpunkt Demodaten einfügen möchten, führen Sie aus:
 ```bash
 node insertDemoContacts.js
 ```
 
 ### Database Tools
-We have two tools to work with the mongoDB database: 
+Wir haben zwei Tools, um mit der MongoDB-Datenbank zu arbeiten:
 #### MongoDB Express
-- Open the tool on [localhost:8081](http://localhost:8081)
-- Login with Username: ``admin`` and Password: ``pass``
-- Maintain your database
+- Öffnen sie das Tool auf [localhost:8081](http://localhost:8081)
+- Login mit Username: ``admin`` und Password: ``pass``
+- Verwalten Sie ihre Datenbank
 
 #### MongoDB VsCode extension
-- Click in the MongoDB Tab on the left side of your VsCode Editor.
-- Click in the local mongoDB which runs on ``localhost:27017``
-- Maintain your Database
+- Klicken Sie im MongoDB-Tab auf der linken Seite Ihres VSCode-Editors.
+- Klicken Sie auf die lokale MongoDB, die auf ``localhost:27017`` läuft
+
 
 ## Extensions
-- MongoDB: To maintain your database
-- Prettier: To format you Code
-- Icons: To have a better overview over your project structure
-- Docker: To work with docker
-- Color-Info: To better customize your colors in CSS
-- W3C-Validator: To validate your HTML and CSS files
+- MongoDB
+- Prettier
+- Icons
+- Docker
+- Color-Info
+- W3C-Validator
 
 ### Important
-The node image which is used in this devcontainer already comes with some extensions like EsLint for more information go to [DockerHub-Node](https://hub.docker.com/_/microsoft-devcontainers-javascript-node)
+Das in diesem Devcontainer verwendete Node-Image kommt bereits mit einigen Erweiterungen wie EsLint. Weitere Informationen finden Sie auf  [DockerHub-Node](https://hub.docker.com/_/microsoft-devcontainers-javascript-node)
 
 ## Productive Containers
-You can build your Productive Container with the Dockerfile in this project. Keep in mind that your MongoDB Database won't be installed in this produtive container. It will only contain the node.js app without files for docker or github. The .env and deployment files won't be copied either. If you really want to use this app for productive purposes make sure you connect to an external mongoDB Database you configured at another point.
+Sie können Ihren produktiven Container mit der Dockerfile in diesem Projekt erstellen. Beachten Sie, dass Ihre MongoDB-Datenbank nicht in diesem produktiven Container installiert wird. Es wird nur die Node.js-App ohne Docker- oder GitHub-Dateien enthalten. Die .env- und Deployment-Dateien werden ebenfalls nicht kopiert. Wenn Sie diese App wirklich für produktive Zwecke verwenden möchten, stellen Sie sicher, dass Sie eine externe MongoDB-Datenbank verbinden, die Sie an einem anderen Punkt konfiguriert haben.
 
 ### .env file configuration
-To deploy your docker image to docker-hub you need to sign in with your account. For this you need to set your username and password in the .env file, which will be read by the deployment script. For this do the following steps:
+Um Ihr Docker-Image auf Docker-Hub zu deployen, müssen Sie sich mit Ihrem Konto anmelden. Dafür müssen Sie Ihren Benutzernamen und Ihr Passwort in der .env-Datei festlegen, die vom Deployment-Skript gelesen wird. Gehen Sie dazu wie folgt vor:
 1. Copy ``.env.sample``
 2. Rename it to ``.env``
 3. Set your credentials to the matching variables
 
 ### Deploy your productive image on DockerHub
-You can deploy your docker image with the existing ``deployment.sh`` script. To run the script open your bash terminal an run the following command:
+Sie können Ihr Docker-Image mit dem vorhandenen deployment.sh-Skript bereitstellen. Um das Skript auszuführen, öffnen Sie Ihr Bash-Terminal und führen Sie den folgenden Befehl aus:
 ```bash
 ./deployment.sh
 ```
 
-If the access is denied run the following commands:
+Wenn der Zugriff verweigert wird, führen Sie die folgenden Befehle aus:
 ```bash
 chmod +x deployment.sh
 ```
-or
+oder
 ```bash
 sudo ./deployment.sh
 ```
-After pushing your image you can find it on [DockerHub](https://hub.docker.com/repositories).
+Nach dem Push Ihres Images finden Sie es auf [DockerHub](https://hub.docker.com/repositories).
 
 ### Important 
-To run this deployment script you must be on your local machine and not in your dev-container. You can just pull this project on your machine and run the script with you locally installed bash shell (mostly WSL).
+Um dieses Deployment-Skript auszuführen, müssen Sie sich auf Ihrer lokalen Maschine und nicht im Dev-Container befinden. Sie können dieses Projekt einfach auf Ihre Maschine ziehen und das Skript mit Ihrer lokal installierten Bash-Shell (meistens WSL) ausführen.
 
 
